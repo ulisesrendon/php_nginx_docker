@@ -1,0 +1,3 @@
+src/*
+!src/example.conf.example
+!src/example
