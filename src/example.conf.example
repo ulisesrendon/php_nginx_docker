@@ -1,9 +1,20 @@
 server {
+  listen 80 default_server; 
+  root /var/www/example;
   index index.php index.html;
+  error_log  /var/log/nginx/example-access.log;
+  access_log /var/log/nginx/example-error.log;
+
+  charset utf-8; 
+
   server_name example.localhost;
-  error_log  /var/log/nginx/error.log;
-  access_log /var/log/nginx/access.log;
-  root /var/www/html/example;
+  
+  location / {  
+    try_files $uri $uri/ /index.php?$query_string;  
+  }  
+
+  location = /favicon.ico { access_log off; log_not_found off; }  
+  location = /robots.txt { access_log off; log_not_found off; }  
 
   location ~ \.php$ {
     try_files $uri =404;
