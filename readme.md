@@ -27,5 +27,10 @@ docker compose up -d --build
 
 ## Running commands inside docker service
 ```shell
-docker compose run php-fpm /var/www/example/composer.phar install --working-dir=/var/www/example
+docker compose run php-fpm composer install --working-dir=/var/www/app1
+```
+
+## Get my docker host ip address
+```shell
+ip -4 addr show docker0 | awk '$1=="inet" {print $2}' | cut -d/ -f1
 ```

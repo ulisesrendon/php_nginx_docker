@@ -15,4 +15,6 @@ RUN apt-get update  && apt-get install -y \
 #   && pecl install ds
 RUN apt-get install -y libpq-dev \
 && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-&& docker-php-ext-install pdo pdo_pgsql pgsql
+&& docker-php-ext-install pdo pdo_pgsql pdo_mysql pgsql mysqli
+
+COPY --from=composer /usr/bin/composer /usr/bin/composer

@@ -1,5 +1,6 @@
 src/*
-!src/example
 !src/app1
 !src/app2
 !src/logs/.gitkeep
+data/*
+!data/.gitkeep
